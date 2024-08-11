@@ -6,8 +6,8 @@
  * @link       http://onlinewebtutorhub.blogspot.com/
  * @since      1.0.0
  *
- * @package    Books_Management_Tool
- * @subpackage Books_Management_Tool/includes
+ * @package    BooksManagementTool
+ * @subpackage BooksManagementTool/includes
  */
 
 /**

@@ -41,10 +41,10 @@ define('BOOKS_MANAGEMENT_TOOL_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-books-management-tool-activator.php
+ * This action is documented in includes/BooksManagementToolActivator.php
  */
 function activate_books_management_tool() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-books-management-tool-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/BooksManagementToolActivator.php';
 	$activator = new BooksManagementToolActivator();
 	$activator->activate();
 }
@@ -55,7 +55,7 @@ function activate_books_management_tool() {
  */
 function deactivate_books_management_tool() {
 
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-books-management-tool-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/BooksManagementToolActivator.php';
 	$activator = new BooksManagementToolActivator();
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-books-management-tool-deactivator.php';
