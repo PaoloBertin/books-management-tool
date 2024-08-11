@@ -55,7 +55,7 @@ class BooksManagementToolAdmin {
 		$this->version = $version;
 
 		require_once BOOKS_MANAGEMENT_TOOL_PLUGIN_PATH . 'includes/class-books-management-tool-activator.php';
-	$activator = new Books_Management_Tool_Activator();
+	$activator = new BooksManagementToolActivator();
 		$this->table_activator = $activator;
 
 	}

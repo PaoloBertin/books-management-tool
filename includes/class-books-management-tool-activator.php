@@ -20,7 +20,7 @@
  * @subpackage Books_Management_Tool/includes
  * @author     Online Web Tutor <onlinewebtutorhub@gmail.com>
  */
-class Books_Management_Tool_Activator {
+class BooksManagementToolActivator {
 
 	/**
 	 * Short Description. (use period)
