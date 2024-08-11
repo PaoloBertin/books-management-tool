@@ -114,7 +114,7 @@ class BooksManagementTool {
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-books-management-tool-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/BooksManagementToolAdmin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
