@@ -164,7 +164,8 @@ class BooksManagementToolAdmin
 
 		$book_shelf = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT * FROM " . $this->table_activator->wp_owt_tbl_book_shelf(), ""
+				"SELECT * FROM " . $this->table_activator->wp_owt_tbl_book_shelf(),
+				""
 			)
 		);
 

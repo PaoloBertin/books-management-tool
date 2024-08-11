@@ -20,7 +20,8 @@
  * @subpackage BooksManagementTool/public
  * @author     Online Web Tutor <onlinewebtutorhub@gmail.com>
  */
-class BooksManagementToolPublic {
+class BooksManagementToolPublic
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,11 +48,11 @@ class BooksManagementToolPublic {
 	 * @param      string    $plugin_name	The name of the plugin.
 	 * @param      string    $version		The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -59,7 +60,8 @@ class BooksManagementToolPublic {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,8 +75,7 @@ class BooksManagementToolPublic {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/books-management-tool-public.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/books-management-tool-public.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -82,7 +83,8 @@ class BooksManagementToolPublic {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,33 +98,34 @@ class BooksManagementToolPublic {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/books-management-tool-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/books-management-tool-public.js', array('jquery'), $this->version, false);
 
-		wp_localize_script($this->plugin_name, "owt_book",array(
+		wp_localize_script($this->plugin_name, "owt_book", array(
 			"name" => "Online Web Tutor",
 			"author" => "Sanjay Kumar",
 			"ajaxurl" => admin_url("admin-ajax.php")
 		));
-
 	}
 
-	public function our_own_custom_page_template(){
+	public function our_own_custom_page_template()
+	{
 
 		global $post;
 
-		if($post->post_name == "book_tool"){
+		if ($post->post_name == "book_tool") {
 
-			$page_template = BOOKS_MANAGEMENT_TOOL_PLUGIN_PATH."public/partials/book-tool-layout.php";
+			$page_template = BOOKS_MANAGEMENT_TOOL_PLUGIN_PATH . "public/partials/book-tool-layout.php";
 		}
 
 		return $page_template;
 	}
 
-	public function load_book_tool_content(){
+	public function load_book_tool_content()
+	{
 
 		ob_start();
 
-		include_once BOOKS_MANAGEMENT_TOOL_PLUGIN_PATH.'public/partials/tmpl-book-tool-content.php';
+		include_once BOOKS_MANAGEMENT_TOOL_PLUGIN_PATH . 'public/partials/tmpl-book-tool-content.php';
 
 		$template = ob_get_contents();
 
@@ -131,13 +134,14 @@ class BooksManagementToolPublic {
 		echo $template;
 	}
 
-	public function handle_ajax_request_public(){
+	public function handle_ajax_request_public()
+	{
 
 		$param = isset($_REQUEST['param']) ? $_REQUEST['param'] : "";
 
-		if(!empty($param)){
+		if (!empty($param)) {
 
-			if($param == "first_ajax_request"){
+			if ($param == "first_ajax_request") {
 
 				echo json_encode(array(
 					"status" => 1,
@@ -148,5 +152,4 @@ class BooksManagementToolPublic {
 
 		wp_die();
 	}
-
 }

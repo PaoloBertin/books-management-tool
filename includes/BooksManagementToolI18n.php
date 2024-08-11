@@ -24,7 +24,8 @@
  * @subpackage Books_Management_Tool/includes
  * @author     Online Web Tutor <onlinewebtutorhub@gmail.com>
  */
-class BooksManagementTooli18n {
+class BooksManagementTooli18n
+{
 
 
 	/**
@@ -32,16 +33,13 @@ class BooksManagementTooli18n {
 	 *
 	 * @since    1.0.0
 	 */
-	public function load_plugin_textdomain() {
+	public function load_plugin_textdomain()
+	{
 
 		load_plugin_textdomain(
 			'books-management-tool',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
 		);
-
 	}
-
-
-
 }

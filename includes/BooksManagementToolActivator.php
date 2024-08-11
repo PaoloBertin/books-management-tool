@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  * Fired during plugin activation
  *
@@ -20,7 +20,8 @@
  * @subpackage Books_Management_Tool/includes
  * @author     Online Web Tutor <onlinewebtutorhub@gmail.com>
  */
-class BooksManagementToolActivator {
+class BooksManagementToolActivator
+{
 
 	/**
 	 * Short Description. (use period)
@@ -29,14 +30,15 @@ class BooksManagementToolActivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public function activate() {
+	public function activate()
+	{
 
 		global $wpdb;
 
-		if($wpdb->get_var("SHOW tables like '".$this->wp_owt_tbl_books()."'") != $this->wp_owt_tbl_books()){
+		if ($wpdb->get_var("SHOW tables like '" . $this->wp_owt_tbl_books() . "'") != $this->wp_owt_tbl_books()) {
 
 			// dynamic table generating code...
-		 $table_query = "CREATE TABLE `".$this->wp_owt_tbl_books()."` (
+			$table_query = "CREATE TABLE `" . $this->wp_owt_tbl_books() . "` (
 								`id` int(11) NOT NULL AUTO_INCREMENT,
 								`name` varchar(150) DEFAULT NULL,
 								`amount` int(11) DEFAULT NULL,
@@ -50,14 +52,14 @@ class BooksManagementToolActivator {
 								PRIMARY KEY (`id`)
 							 ) ENGINE=InnoDB DEFAULT CHARSET=latin1"; // table create query
 
-		 require_once (ABSPATH.'wp-admin/includes/upgrade.php');
-		 dbDelta($table_query);
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+			dbDelta($table_query);
 		}
 
-	    // table for create shelf
-	    if($wpdb->get_var("Show tables like '".$this->wp_owt_tbl_book_shelf()."'") != $this->wp_owt_tbl_book_shelf()){
+		// table for create shelf
+		if ($wpdb->get_var("Show tables like '" . $this->wp_owt_tbl_book_shelf() . "'") != $this->wp_owt_tbl_book_shelf()) {
 
-	    	$shelf_table = "CREATE TABLE `".$this->wp_owt_tbl_book_shelf()."` (
+			$shelf_table = "CREATE TABLE `" . $this->wp_owt_tbl_book_shelf() . "` (
 					 `id` int(11) NOT NULL AUTO_INCREMENT,
 					 `shelf_name` varchar(150) NOT NULL,
 					 `capacity` int(11) NOT NULL,
@@ -67,53 +69,54 @@ class BooksManagementToolActivator {
 					 PRIMARY KEY (`id`)
 					) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 
-			require_once (ABSPATH.'wp-admin/includes/upgrade.php');
-		    dbDelta($shelf_table);
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+			dbDelta($shelf_table);
 
-		    $insert_query = "INSERT into ".$this->wp_owt_tbl_book_shelf()." (shelf_name, capacity, shelf_location, status) VALUES 
+			$insert_query = "INSERT into " . $this->wp_owt_tbl_book_shelf() . " (shelf_name, capacity, shelf_location, status) VALUES 
 		        ('Shelf 1', 230, 'Left Cornor', 1), 
 		        ('Shelf 2', 300, 'Right Cornor', 1), 
 		        ('Shelf 3', 100, 'Center Top', 1)";
 
-		    $wpdb->query($insert_query);
-	    }
+			$wpdb->query($insert_query);
+		}
 
-	    // create page on plugin activation
-	    // wp_posts
-	    $get_data =$wpdb->get_row(
-	    	$wpdb->prepare(
-	    		"SELECT * from ".$wpdb->prefix."posts WHERE post_name = %s", 'book_tool'
-	    	)
-	    );
- 
-	    if(!empty($get_data)){
-	    	// already we have data with this post name
-	    }else{
-	    	// create page
-	    	$post_arr_data = array(
-	    		"post_title" => "Book Tool",
-	    		"post_name" => "book_tool",
-	    		"post_status" => "publish",
-	    		"post_author" => 1,
-	    		"post_content" => "Simple page content of Book Tool",
-	    		"post_type" => "page"
-	    	);
+		// create page on plugin activation
+		// wp_posts
+		$get_data = $wpdb->get_row(
+			$wpdb->prepare(
+				"SELECT * from " . $wpdb->prefix . "posts WHERE post_name = %s",
+				'book_tool'
+			)
+		);
 
-	    	wp_insert_post($post_arr_data);
-	    }
+		if (!empty($get_data)) {
+			// already we have data with this post name
+		} else {
+			// create page
+			$post_arr_data = array(
+				"post_title" => "Book Tool",
+				"post_name" => "book_tool",
+				"post_status" => "publish",
+				"post_author" => 1,
+				"post_content" => "Simple page content of Book Tool",
+				"post_type" => "page"
+			);
 
+			wp_insert_post($post_arr_data);
+		}
 	}
 
-	public function wp_owt_tbl_books(){
+	public function wp_owt_tbl_books()
+	{
 
 		global $wpdb;
-		return $wpdb->prefix."owt_tbl_books"; // $wpdb->prefix => wp_
+		return $wpdb->prefix . "owt_tbl_books"; // $wpdb->prefix => wp_
 	}
 
-	public function wp_owt_tbl_book_shelf(){
+	public function wp_owt_tbl_book_shelf()
+	{
 
 		global $wpdb;
-		return $wpdb->prefix."owt_tbl_book_shelf";
+		return $wpdb->prefix . "owt_tbl_book_shelf";
 	}
-
 }

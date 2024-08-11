@@ -27,7 +27,8 @@
  * @subpackage Books_Management_Tool/includes
  * @author     Online Web Tutor <onlinewebtutorhub@gmail.com>
  */
-class BooksManagementTool {
+class BooksManagementTool
+{
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -66,8 +67,9 @@ class BooksManagementTool {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
-		if ( defined( 'BOOKS_MANAGEMENT_TOOL_VERSION' ) ) {
+	public function __construct()
+	{
+		if (defined('BOOKS_MANAGEMENT_TOOL_VERSION')) {
 			$this->version = BOOKS_MANAGEMENT_TOOL_VERSION;
 		} else {
 			$this->version = '1.0.0';
@@ -78,7 +80,6 @@ class BooksManagementTool {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**
@@ -97,33 +98,33 @@ class BooksManagementTool {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function load_dependencies()
+	{
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/BooksManagementToolLoader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/BooksManagementToolLoader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/BooksManagementToolI18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/BooksManagementToolI18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/BooksManagementToolAdmin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/BooksManagementToolAdmin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/BooksManagementToolPublic.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/BooksManagementToolPublic.php';
 
 		$this->loader = new BooksManagementToolLoader();
-
 	}
 
 	/**
@@ -135,12 +136,12 @@ class BooksManagementTool {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function set_locale() {
+	private function set_locale()
+	{
 
 		$plugin_i18n = new BooksManagementTooli18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
 
 	/**
@@ -150,18 +151,18 @@ class BooksManagementTool {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
+	private function define_admin_hooks()
+	{
 
-		$plugin_admin = new BooksManagementToolAdmin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new BooksManagementToolAdmin($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-    // action hook for admin menu
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'book_management_menu' );
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+		// action hook for admin menu
+		$this->loader->add_action('admin_menu', $plugin_admin, 'book_management_menu');
 
 		// action hook for ajax
-		$this->loader->add_action("wp_ajax_admin_ajax_request" , $plugin_admin, 'handle_ajax_requests_admin' );
-
+		$this->loader->add_action("wp_ajax_admin_ajax_request", $plugin_admin, 'handle_ajax_requests_admin');
 	}
 
 	/**
@@ -171,12 +172,13 @@ class BooksManagementTool {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+	private function define_public_hooks()
+	{
 
-		$plugin_public = new BooksManagementToolPublic( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new BooksManagementToolPublic($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 
 		// filter for page template
 		$this->loader->add_filter("page_template", $plugin_public, "our_own_custom_page_template");
@@ -188,7 +190,6 @@ class BooksManagementTool {
 
 		// this is for not logged in
 		$this->loader->add_action("wp_ajax_nopriv_public_ajax_request", $plugin_public, "handle_ajax_request_public");
-
 	}
 
 	/**
@@ -196,7 +197,8 @@ class BooksManagementTool {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function run()
+	{
 		$this->loader->run();
 	}
 
@@ -207,7 +209,8 @@ class BooksManagementTool {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name() {
+	public function get_plugin_name()
+	{
 		return $this->plugin_name;
 	}
 
@@ -217,7 +220,8 @@ class BooksManagementTool {
 	 * @since     1.0.0
 	 * @return    BooksManagementToolLoader    Orchestrates the hooks of the plugin.
 	 */
-	public function get_loader() {
+	public function get_loader()
+	{
 		return $this->loader;
 	}
 
@@ -227,8 +231,8 @@ class BooksManagementTool {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function get_version() {
+	public function get_version()
+	{
 		return $this->version;
 	}
-
 }
