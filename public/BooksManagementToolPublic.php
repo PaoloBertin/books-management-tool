@@ -1,5 +1,7 @@
 <?php
 
+namespace eu\opensource\public;
+
 /**
  * The public-facing functionality of the plugin.
  *

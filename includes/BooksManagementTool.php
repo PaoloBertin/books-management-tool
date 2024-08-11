@@ -1,5 +1,11 @@
 <?php
 
+namespace eu\opensource\includes;
+
+use eu\opensource\admin\BooksManagementToolAdmin;
+use eu\opensource\includes\BooksManagementToolLoader;
+use eu\opensource\public\BooksManagementToolPublic;
+
 /**
  * The file that defines the core plugin class
  *
@@ -108,8 +114,7 @@ class BooksManagementTool
 		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/BooksManagementToolLoader.php';
 
 		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
+		 * The class responsible for defining internationalization functionality of the plugin.
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/BooksManagementToolI18n.php';
 
@@ -119,8 +124,7 @@ class BooksManagementTool
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/BooksManagementToolAdmin.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
+		 * The class responsible for defining all actions that occur in the public-facing side of the site.
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'public/BooksManagementToolPublic.php';
 

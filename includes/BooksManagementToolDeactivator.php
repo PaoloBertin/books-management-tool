@@ -1,5 +1,7 @@
 <?php
 
+namespace eu\opensource\includes;
+
 /**
  * Fired during plugin deactivation
  *

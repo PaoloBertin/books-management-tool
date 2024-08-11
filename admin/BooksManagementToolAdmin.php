@@ -1,5 +1,9 @@
 <?php
 
+namespace eu\opensource\admin;
+
+use eu\opensource\includes\BooksManagementToolActivator;
+
 /**
  * The admin-specific functionality of the plugin.
  *
