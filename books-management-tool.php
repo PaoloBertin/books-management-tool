@@ -51,14 +51,14 @@ function activate_books_management_tool() {
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-books-management-tool-deactivator.php
+ * This action is documented in includes/BooksManagementToolDeactivator.php
  */
 function deactivate_books_management_tool() {
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/BooksManagementToolActivator.php';
 	$activator = new BooksManagementToolActivator();
 
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-books-management-tool-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/BooksManagementToolDeactivator.php';
 	$deactivator  = new BooksManagementToolDeactivator($activator);
 	$deactivator->deactivate();
 }
