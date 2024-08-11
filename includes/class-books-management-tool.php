@@ -35,7 +35,7 @@ class BooksManagementTool {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Books_Management_Tool_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      BooksManagementToolLoader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -86,7 +86,7 @@ class BooksManagementTool {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Books_Management_Tool_Loader. Orchestrates the hooks of the plugin.
+	 * - BooksManagementToolLoader. Orchestrates the hooks of the plugin.
 	 * - BooksManagementTooli18n. Defines internationalization functionality.
 	 * - BooksManagementToolAdmin. Defines all hooks for the admin area.
 	 * - Books_Management_Tool_Public. Defines all hooks for the public side of the site.
@@ -122,7 +122,7 @@ class BooksManagementTool {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-books-management-tool-public.php';
 
-		$this->loader = new Books_Management_Tool_Loader();
+		$this->loader = new BooksManagementToolLoader();
 
 	}
 
@@ -215,7 +215,7 @@ class BooksManagementTool {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Books_Management_Tool_Loader    Orchestrates the hooks of the plugin.
+	 * @return    BooksManagementToolLoader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

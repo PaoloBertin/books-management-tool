@@ -65,10 +65,10 @@ class Books_Management_Tool_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Books_Management_Tool_Loader as all of the hooks are defined
+		 * defined in BooksManagementToolLoader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Books_Management_Tool_Loader will then create the relationship
+		 * The BooksManagementToolLoader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -88,10 +88,10 @@ class Books_Management_Tool_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Books_Management_Tool_Loader as all of the hooks are defined
+		 * defined in BooksManagementToolLoader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Books_Management_Tool_Loader will then create the relationship
+		 * The BooksManagementToolLoader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
