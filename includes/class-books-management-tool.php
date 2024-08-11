@@ -87,7 +87,7 @@ class BooksManagementTool {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Books_Management_Tool_Loader. Orchestrates the hooks of the plugin.
-	 * - Books_Management_Tool_i18n. Defines internationalization functionality.
+	 * - BooksManagementTooli18n. Defines internationalization functionality.
 	 * - BooksManagementToolAdmin. Defines all hooks for the admin area.
 	 * - Books_Management_Tool_Public. Defines all hooks for the public side of the site.
 	 *
@@ -129,7 +129,7 @@ class BooksManagementTool {
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Books_Management_Tool_i18n class in order to set the domain and to register the hook
+	 * Uses the BooksManagementTooli18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -137,7 +137,7 @@ class BooksManagementTool {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Books_Management_Tool_i18n();
+		$plugin_i18n = new BooksManagementTooli18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
