@@ -1,8 +1,8 @@
 <?php
 
-use eu\opensource\includes\BooksManagementToolActivator;
-use eu\opensource\includes\BooksManagementToolDeactivator;
-use eu\opensource\includes\BooksManagementTool;
+use includes\BooksManagementToolActivator;
+use includes\BooksManagementToolDeactivator;
+use includes\BooksManagementTool;
 
 /**
  * The plugin bootstrap file
@@ -30,7 +30,7 @@ use eu\opensource\includes\BooksManagementTool;
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (! defined('WPINC')) {
 	die;
 }
 
@@ -39,8 +39,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'BOOKS_MANAGEMENT_TOOL_VERSION', '1.0.0' );
-define( 'BOOKS_MANAGEMENT_TOOL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define('BOOKS_MANAGEMENT_TOOL_VERSION', '1.0.0');
+define('BOOKS_MANAGEMENT_TOOL_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('BOOKS_MANAGEMENT_TOOL_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 require 'functions.php';
@@ -49,8 +49,9 @@ require 'functions.php';
  * The code that runs during plugin activation.
  * This action is documented in includes/BooksManagementToolActivator.php
  */
-function activateBooksManagementTool() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/BooksManagementToolActivator.php';
+function activateBooksManagementTool()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/BooksManagementToolActivator.php';
 	$activator = new BooksManagementToolActivator();
 	$activator->activate();
 }
@@ -59,24 +60,25 @@ function activateBooksManagementTool() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/BooksManagementToolDeactivator.php
  */
-function deactivateBooksManagementTool() {
+function deactivateBooksManagementTool()
+{
 
-	require_once plugin_dir_path( __FILE__ ) . 'includes/BooksManagementToolActivator.php';
+	require_once plugin_dir_path(__FILE__) . 'includes/BooksManagementToolActivator.php';
 	$activator = new BooksManagementToolActivator();
 
-	require_once plugin_dir_path( __FILE__ ) . 'includes/BooksManagementToolDeactivator.php';
+	require_once plugin_dir_path(__FILE__) . 'includes/BooksManagementToolDeactivator.php';
 	$deactivator  = new BooksManagementToolDeactivator($activator);
 	$deactivator->deactivate();
 }
 
-register_activation_hook( __FILE__, 'activateBooksManagementTool' );
-register_deactivation_hook( __FILE__, 'deactivateBooksManagementTool' );
+register_activation_hook(__FILE__, 'activateBooksManagementTool');
+register_deactivation_hook(__FILE__, 'deactivateBooksManagementTool');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/BooksManagementTool.php';
+require plugin_dir_path(__FILE__) . 'includes/BooksManagementTool.php';
 
 /**
  * Begins execution of the plugin.
@@ -87,10 +89,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/BooksManagementTool.php';
  *
  * @since    1.0.0
  */
-function run_books_management_tool() {
+function run_books_management_tool()
+{
 
 	$plugin = new BooksManagementTool();
 	$plugin->run();
-
 }
 run_books_management_tool();

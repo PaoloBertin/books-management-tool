@@ -1,10 +1,10 @@
 <?php
 
-namespace eu\opensource\includes;
+namespace includes;
 
-use eu\opensource\admin\BooksManagementToolAdmin;
-use eu\opensource\includes\BooksManagementToolLoader;
-use eu\opensource\public\BooksManagementToolPublic;
+use admin\BooksManagementToolAdmin;
+use includes\BooksManagementToolLoader;
+use public\BooksManagementToolPublic;
 
 /**
  * The file that defines the core plugin class

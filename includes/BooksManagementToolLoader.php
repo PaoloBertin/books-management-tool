@@ -1,6 +1,6 @@
 <?php
 
-namespace eu\opensource\includes;
+namespace includes;
 
 /**
  * Register all actions and filters for the plugin

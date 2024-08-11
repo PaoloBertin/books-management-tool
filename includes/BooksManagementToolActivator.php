@@ -1,6 +1,6 @@
 <?php
 
-namespace eu\opensource\includes;
+namespace includes;
 
 /**
  * Fired during plugin activation
