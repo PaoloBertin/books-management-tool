@@ -27,7 +27,7 @@
  * @subpackage Books_Management_Tool/includes
  * @author     Online Web Tutor <onlinewebtutorhub@gmail.com>
  */
-class Books_Management_Tool {
+class BooksManagementTool {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power

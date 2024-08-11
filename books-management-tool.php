@@ -83,7 +83,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-books-management-tool.php'
  */
 function run_books_management_tool() {
 
-	$plugin = new Books_Management_Tool();
+	$plugin = new BooksManagementTool();
 	$plugin->run();
 
 }
