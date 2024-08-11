@@ -6,8 +6,8 @@
  * @link       http://onlinewebtutorhub.blogspot.com/
  * @since      1.0.0
  *
- * @package    Books_Management_Tool
- * @subpackage Books_Management_Tool/public
+ * @package    BooksManagementTool
+ * @subpackage BooksManagementTool/public
  */
 
 /**
@@ -16,8 +16,8 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Books_Management_Tool
- * @subpackage Books_Management_Tool/public
+ * @package    BooksManagementTool
+ * @subpackage BooksManagementTool/public
  * @author     Online Web Tutor <onlinewebtutorhub@gmail.com>
  */
 class BooksManagementToolPublic {
@@ -44,8 +44,8 @@ class BooksManagementToolPublic {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string    $plugin_name	The name of the plugin.
+	 * @param      string    $version		The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
