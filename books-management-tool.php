@@ -59,7 +59,7 @@ function deactivate_books_management_tool() {
 	$activator = new BooksManagementToolActivator();
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-books-management-tool-deactivator.php';
-	$deactivator  = new Books_Management_Tool_Deactivator($activator);
+	$deactivator  = new BooksManagementToolDeactivator($activator);
 	$deactivator->deactivate();
 }
 
