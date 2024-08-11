@@ -53,7 +53,7 @@ function activateBooksManagementTool() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/BooksManagementToolDeactivator.php
  */
-function deactivate_books_management_tool() {
+function deactivateBooksManagementTool() {
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/BooksManagementToolActivator.php';
 	$activator = new BooksManagementToolActivator();
@@ -64,7 +64,7 @@ function deactivate_books_management_tool() {
 }
 
 register_activation_hook( __FILE__, 'activateBooksManagementTool' );
-register_deactivation_hook( __FILE__, 'deactivate_books_management_tool' );
+register_deactivation_hook( __FILE__, 'deactivateBooksManagementTool' );
 
 /**
  * The core plugin class that is used to define internationalization,
