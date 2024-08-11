@@ -89,7 +89,7 @@ class BooksManagementTool {
 	 * - BooksManagementToolLoader. Orchestrates the hooks of the plugin.
 	 * - BooksManagementTooli18n. Defines internationalization functionality.
 	 * - BooksManagementToolAdmin. Defines all hooks for the admin area.
-	 * - Books_Management_Tool_Public. Defines all hooks for the public side of the site.
+	 * - BooksManagementToolPublic. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -173,7 +173,7 @@ class BooksManagementTool {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Books_Management_Tool_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new BooksManagementToolPublic( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );

@@ -20,7 +20,7 @@
  * @subpackage Books_Management_Tool/public
  * @author     Online Web Tutor <onlinewebtutorhub@gmail.com>
  */
-class Books_Management_Tool_Public {
+class BooksManagementToolPublic {
 
 	/**
 	 * The ID of this plugin.
