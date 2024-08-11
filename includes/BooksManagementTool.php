@@ -109,7 +109,7 @@ class BooksManagementTool {
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-books-management-tool-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/BooksManagementToolI18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
