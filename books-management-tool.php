@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://onlinewebtutorhub.blogspot.com/
+ * @link              
  * @since             1.0.0
- * @package           Books_Management_Tool
+ * @package           BooksManagementTool
  *
  * @wordpress-plugin
  * Plugin Name:       Books Management Tool
- * Plugin URI:        http://onlinewebtutorhub.blogspot.com/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Plugin URI:        
+ * Description:       Gestione Biblioteca.
  * Version:           1.0.0
- * Author:            Online Web Tutor
- * Author URI:        http://onlinewebtutorhub.blogspot.com/
+ * Author:            Paolo Bertin
+ * Author URI:        
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       books-management-tool
