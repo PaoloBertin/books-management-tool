@@ -1,32 +1,26 @@
 <?php
 
-function load_includes($class_name)
+/**
+ * https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
+ * 
+ * @param string $class The fully-qualified class name.
+ * @return void
+ */
+function load_class($class)
 {
-    $path_to_file = 'includes/' . $class_name . '.php';
+    // plugin directory 
+    $plugin_dir = plugin_dir_path(__FILE__);
 
-    if (file_exists($path_to_file)) {
-        require $path_to_file;
+    // get the relative path class
+    $relative_class = str_replace('\\', '/', $class);
+
+    // get the absolute path class
+    $file = $plugin_dir . $relative_class . '.php';
+
+    // if the file exists, require it
+    if (file_exists($file)) {
+        require $file;
     }
-}
+};
 
-function load_admin($class_name)
-{
-    $path_to_file = 'admin/' . $class_name . '.php';
-
-    if (file_exists($path_to_file)) {
-        require $path_to_file;
-    }
-}
-
-function load_public($class_name)
-{
-    $path_to_file = 'public/' . $class_name . '.php';
-
-    if (file_exists($path_to_file)) {
-        require $path_to_file;
-    }
-}
-
-spl_autoload_register('load_includes');
-spl_autoload_register('load_admin');
-spl_autoload_register('load_public');
+spl_autoload_register('load_class');
