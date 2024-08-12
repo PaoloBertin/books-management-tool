@@ -135,12 +135,6 @@ class BooksManagementToolAdmin
 		add_submenu_page("book-management-tool", "List Book", "List Book", "manage_options", "book-management-list-book", array($this, "book_management_list_book"));
 	}
 
-	// menu callback function
-	public function book_management_dashboard()
-	{
-		echo "<h3>Welcome to Plugin dashboard</h3>";
-	}
-
 	public function book_management_list_book_shelf()
 	{
 		global $wpdb;

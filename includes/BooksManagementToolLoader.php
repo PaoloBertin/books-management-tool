@@ -87,8 +87,7 @@ class BooksManagementToolLoader
 	}
 
 	/**
-	 * A utility function that is used to register the actions and hooks into a single
-	 * collection.
+	 * A utility function that is used to register the actions and hooks into a single collection.
 	 *
 	 * @since    1.0.0
 	 * @access   private

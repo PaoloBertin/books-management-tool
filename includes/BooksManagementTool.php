@@ -150,8 +150,7 @@ class BooksManagementTool
 	}
 
 	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
+	 * Register all of the hooks related to the public-facing functionality of the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   private
