@@ -71,7 +71,6 @@ class BooksManagementToolAdmin
 	 */
 	public function enqueue_styles()
 	{
-
 		$valid_pages = array("book-management-tool", "book-management-create-book", "book-management-list-book", "book-management-create-book-shelf", "book-management-list-book-shelf");
 
 		$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : "";
@@ -80,14 +79,9 @@ class BooksManagementToolAdmin
 
 			// adding css files in valid pages
 			wp_enqueue_style("owt-bootstrap", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/bootstrap.min.css', array(), $this->version, 'all');
-
 			wp_enqueue_style("owt-datatable", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/jquery.dataTables.min.css', array(), $this->version, 'all');
-
 			wp_enqueue_style("owt-sweetalert", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/sweetalert.css', array(), $this->version, 'all');
 		}
-
-		//wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/books-management-tool-admin.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -97,7 +91,6 @@ class BooksManagementToolAdmin
 	 */
 	public function enqueue_scripts()
 	{
-
 		$valid_pages = array("book-management-tool", "book-management-create-book", "book-management-list-book", "book-management-create-book-shelf", "book-management-list-book-shelf");
 
 		$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : "";
@@ -105,17 +98,11 @@ class BooksManagementToolAdmin
 		if (in_array($page, $valid_pages)) {
 
 			wp_enqueue_script("jquery");
-
 			wp_enqueue_script("owt-bootstrap-js", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/bootstrap.min.js', array('jquery'), $this->version, false);
-
 			wp_enqueue_script("owt-datatable-js", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/jquery.dataTables.min.js', array('jquery'), $this->version, false);
-
 			wp_enqueue_script("owt-validate-js", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/jquery.validate.min.js', array('jquery'), $this->version, false);
-
 			wp_enqueue_script("owt-sweetalert-js", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/sweetalert.min.js', array('jquery'), $this->version, false);
-
 			wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/books-management-tool-admin.js', array('jquery'), $this->version, false);
-
 			wp_localize_script($this->plugin_name, "owt_book", array(
 				"name" => "Online Web Tutor",
 				"author" => "Sanjay Kumar",
@@ -127,7 +114,6 @@ class BooksManagementToolAdmin
 	// create menu method
 	public function book_management_menu()
 	{
-
 		add_menu_page(
 			"Book Management Tool",
 			"Book Management Tool",
@@ -143,37 +129,23 @@ class BooksManagementToolAdmin
 
 		// create plugin submenus
 		add_submenu_page("book-management-tool", "Dashboard", "Dashboard", "manage_options", "book-management-tool", array($this, "book_management_plugin"));
-
 		add_submenu_page("book-management-tool", "Create Book Shelf", "Create Book Shelf", "manage_options", "book-management-create-book-shelf", array($this, "book_management_create_book_shelf"));
-
 		add_submenu_page("book-management-tool", "List Book Shelf", "List Book Shelf", "manage_options", "book-management-list-book-shelf", array($this, "book_management_list_book_shelf"));
-
 		add_submenu_page("book-management-tool", "Create Book", "Create Book", "manage_options", "book-management-create-book", array($this, "book_management_create_book"));
-
 		add_submenu_page("book-management-tool", "List Book", "List Book", "manage_options", "book-management-list-book", array($this, "book_management_list_book"));
 	}
 
 	// menu callback function
 	public function book_management_dashboard()
 	{
-
 		echo "<h3>Welcome to Plugin dashboard</h3>";
 	}
 
 	public function book_management_list_book_shelf()
 	{
-
 		global $wpdb;
-
-		$book_shelf = $wpdb->get_results(
-			$wpdb->prepare(
-				"SELECT * FROM " . $this->table_activator->wp_owt_tbl_book_shelf(),
-				""
-			)
-		);
-
-		//echo "<pre>";
-		//print_r($book_shelf);
+		$query = "SELECT * FROM " . $this->table_activator->wp_owt_tbl_book_shelf();
+		$book_shelf = $wpdb->get_results($query);
 
 		ob_start(); // started buffer
 
@@ -189,7 +161,6 @@ class BooksManagementToolAdmin
 	// create book shelf layout
 	public function book_management_create_book_shelf()
 	{
-
 		ob_start(); // started buffer
 
 		include_once(BOOKS_MANAGEMENT_TOOL_PLUGIN_PATH . "admin/partials/tmpl-create-book-shelf.php"); // included template file
@@ -203,19 +174,9 @@ class BooksManagementToolAdmin
 
 	public function book_management_list_book()
 	{
-
 		global $wpdb;
-
-		$books_data = $wpdb->get_results(
-			$wpdb->prepare(
-				"SELECT book.*, book_shelf.shelf_name from " . $this->table_activator->wp_owt_tbl_books() . " as book LEFT JOIN " . $this->table_activator->wp_owt_tbl_book_shelf() . " as book_shelf ON book.shelf_id = book_shelf.id ORDER BY id DESC",
-				""
-			)
-		);
-
-		//echo "<pre>";
-
-		//print_r($books_data);
+		$query = "SELECT book.*, book_shelf.shelf_name from " . $this->table_activator->wp_owt_tbl_books() . " as book LEFT JOIN " . $this->table_activator->wp_owt_tbl_book_shelf() . " as book_shelf ON book.shelf_id = book_shelf.id ORDER BY id DESC";
+		$books_data = $wpdb->get_results($query);
 
 		ob_start(); // started buffer
 
@@ -232,13 +193,8 @@ class BooksManagementToolAdmin
 	{
 
 		global $wpdb;
-
-		$book_shelf = $wpdb->get_results(
-			$wpdb->prepare(
-				"SELECT id, shelf_name FROM " . $this->table_activator->wp_owt_tbl_book_shelf(),
-				""
-			)
-		);
+		$query = "SELECT * FROM " . $this->table_activator->wp_owt_tbl_book_shelf();
+		$book_shelf = $wpdb->get_results($query);
 
 		ob_start(); // started buffer
 
