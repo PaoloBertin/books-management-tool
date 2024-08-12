@@ -51,7 +51,6 @@ require 'functions.php';
  */
 function activateBooksManagementTool()
 {
-	// require_once plugin_dir_path(__FILE__) . 'includes/BooksManagementToolActivator.php';
 	$activator = new BooksManagementToolActivator();
 	$activator->activate();
 }
@@ -62,12 +61,8 @@ function activateBooksManagementTool()
  */
 function deactivateBooksManagementTool()
 {
-
-	//require_once plugin_dir_path(__FILE__) . 'includes/BooksManagementToolActivator.php';
-	// $path = plugin_dir_path(__FILE__) . 'includes/BooksManagementToolActivator.php';
 	$activator = new BooksManagementToolActivator();
 
-	//require_once plugin_dir_path(__FILE__) . 'includes/BooksManagementToolDeactivator.php';
 	$deactivator  = new BooksManagementToolDeactivator($activator);
 	$deactivator->deactivate();
 }
