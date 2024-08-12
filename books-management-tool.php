@@ -74,7 +74,6 @@ register_deactivation_hook(__FILE__, 'deactivateBooksManagementTool');
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-// require plugin_dir_path(__FILE__) . 'includes/BooksManagementTool.php';
 
 /**
  * Begins execution of the plugin.

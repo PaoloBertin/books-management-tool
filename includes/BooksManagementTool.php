@@ -4,6 +4,7 @@ namespace includes;
 
 use admin\BooksManagementToolAdmin;
 use includes\BooksManagementToolLoader;
+use includes\BooksManagementTooli18n;
 use public\BooksManagementToolPublic;
 
 /**
@@ -106,28 +107,6 @@ class BooksManagementTool
 	 */
 	private function load_dependencies()
 	{
-
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/BooksManagementToolLoader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality of the plugin.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/BooksManagementToolI18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/BooksManagementToolAdmin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing side of the site.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/BooksManagementToolPublic.php';
-
 		$this->loader = new BooksManagementToolLoader();
 	}
 
