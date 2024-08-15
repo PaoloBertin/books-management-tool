@@ -51,9 +51,10 @@ class BooksManagementToolActivator
 								`shelf_id` INT NULL,
 								`status` int(11) NOT NULL DEFAULT '1',
 								`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-								PRIMARY KEY (`id`)
+								PRIMARY KEY  (`id`)
 							 ) ENGINE=InnoDB DEFAULT CHARSET=latin1"; // table create query
 
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 			dbDelta($table_query);
 		}
 
@@ -70,6 +71,7 @@ class BooksManagementToolActivator
 					 PRIMARY KEY (`id`)
 					) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 			dbDelta($shelf_table);
 
 			$insert_query = "INSERT into " . $this->wp_owt_tbl_book_shelf() . " (shelf_name, capacity, shelf_location, status) VALUES 
@@ -80,8 +82,7 @@ class BooksManagementToolActivator
 			$wpdb->query($insert_query);
 		}
 
-		// create page on plugin activation
-		// wp_posts
+		// create page on plugin activation wp_posts
 		$get_data = $wpdb->get_row(
 			$wpdb->prepare(
 				"SELECT * from " . $wpdb->prefix . "posts WHERE post_name = %s",
