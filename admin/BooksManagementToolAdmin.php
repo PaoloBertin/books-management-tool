@@ -71,16 +71,40 @@ class BooksManagementToolAdmin
 	 */
 	public function enqueue_styles()
 	{
-		$valid_pages = array("book-management-tool", "book-management-create-book", "book-management-list-book", "book-management-create-book-shelf", "book-management-list-book-shelf");
+		$valid_pages = array(
+			"book-management-tool",
+			"book-management-create-book",
+			"book-management-list-book",
+			"book-management-create-book-shelf",
+			"book-management-list-book-shelf"
+		);
 
 		$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : "";
 
 		if (in_array($page, $valid_pages)) {
 
 			// adding css files in valid pages
-			wp_enqueue_style("owt-bootstrap", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/bootstrap.min.css', array(), $this->version, 'all');
-			wp_enqueue_style("owt-datatable", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/jquery.dataTables.min.css', array(), $this->version, 'all');
-			wp_enqueue_style("owt-sweetalert", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/sweetalert.css', array(), $this->version, 'all');
+			wp_enqueue_style(
+				"owt-bootstrap",
+				BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/bootstrap.min.css',
+				array(),
+				$this->version,
+				'all'
+			);
+			wp_enqueue_style(
+				"owt-datatable",
+				BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/jquery.dataTables.min.css',
+				array(),
+				$this->version,
+				'all'
+			);
+			wp_enqueue_style(
+				"owt-sweetalert",
+				BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/css/sweetalert.css',
+				array(),
+				$this->version,
+				'all'
+			);
 		}
 	}
 
@@ -91,23 +115,64 @@ class BooksManagementToolAdmin
 	 */
 	public function enqueue_scripts()
 	{
-		$valid_pages = array("book-management-tool", "book-management-create-book", "book-management-list-book", "book-management-create-book-shelf", "book-management-list-book-shelf");
+		$valid_pages = array(
+			"book-management-tool",
+			"book-management-create-book",
+			"book-management-list-book",
+			"book-management-create-book-shelf",
+			"book-management-list-book-shelf"
+		);
 
 		$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : "";
 
 		if (in_array($page, $valid_pages)) {
 
 			wp_enqueue_script("jquery");
-			wp_enqueue_script("owt-bootstrap-js", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/bootstrap.min.js', array('jquery'), $this->version, false);
-			wp_enqueue_script("owt-datatable-js", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/jquery.dataTables.min.js', array('jquery'), $this->version, false);
-			wp_enqueue_script("owt-validate-js", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/jquery.validate.min.js', array('jquery'), $this->version, false);
-			wp_enqueue_script("owt-sweetalert-js", BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/sweetalert.min.js', array('jquery'), $this->version, false);
-			wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/books-management-tool-admin.js', array('jquery'), $this->version, false);
-			wp_localize_script($this->plugin_name, "owt_book", array(
-				"name" => "Online Web Tutor",
-				"author" => "Sanjay Kumar",
-				"ajaxurl" => admin_url("admin-ajax.php")
-			));
+			wp_enqueue_script(
+				"owt-bootstrap-js",
+				BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/bootstrap.min.js',
+				array('jquery'),
+				$this->version,
+				false
+			);
+			wp_enqueue_script(
+				"owt-datatable-js",
+				BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/jquery.dataTables.min.js',
+				array('jquery'),
+				$this->version,
+				false
+			);
+			wp_enqueue_script(
+				"owt-validate-js",
+				BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/jquery.validate.min.js',
+				array('jquery'),
+				$this->version,
+				false
+			);
+			wp_enqueue_script(
+				"owt-sweetalert-js",
+				BOOKS_MANAGEMENT_TOOL_PLUGIN_URL . 'assets/js/sweetalert.min.js',
+				array('jquery'),
+				$this->version,
+				false
+			);
+			wp_enqueue_script(
+				$this->plugin_name,
+				plugin_dir_url(__FILE__) . 'js/books-management-tool-admin.js',
+				array('jquery'),
+				$this->version,
+				false
+			);
+
+			wp_localize_script(
+				$this->plugin_name,
+				"owt_book",
+				array(
+					"name" => "Online Web Tutor",
+					"author" => "Sanjay Kumar",
+					"ajaxurl" => admin_url("admin-ajax.php")
+				)
+			);
 		}
 	}
 
@@ -128,11 +193,46 @@ class BooksManagementToolAdmin
 		);
 
 		// create plugin submenus
-		add_submenu_page("book-management-tool", "Dashboard", "Dashboard", "manage_options", "book-management-tool", array($this, "book_management_plugin"));
-		add_submenu_page("book-management-tool", "Create Book Shelf", "Create Book Shelf", "manage_options", "book-management-create-book-shelf", array($this, "book_management_create_book_shelf"));
-		add_submenu_page("book-management-tool", "List Book Shelf", "List Book Shelf", "manage_options", "book-management-list-book-shelf", array($this, "book_management_list_book_shelf"));
-		add_submenu_page("book-management-tool", "Create Book", "Create Book", "manage_options", "book-management-create-book", array($this, "book_management_create_book"));
-		add_submenu_page("book-management-tool", "List Book", "List Book", "manage_options", "book-management-list-book", array($this, "book_management_list_book"));
+		add_submenu_page(
+			"book-management-tool",
+			"Dashboard",
+			"Dashboard",
+			"manage_options",
+			"book-management-tool",
+			array($this, "book_management_plugin")
+		);
+		add_submenu_page(
+			"book-management-tool",
+			"Create Book Shelf",
+			"Create Book Shelf",
+			"manage_options",
+			"book-management-create-book-shelf",
+			array($this, "book_management_create_book_shelf")
+		);
+		add_submenu_page(
+			"book-management-tool",
+			"List Book Shelf",
+			"List Book Shelf",
+			"manage_options",
+			"book-management-list-book-shelf",
+			array($this, "book_management_list_book_shelf")
+		);
+		add_submenu_page(
+			"book-management-tool",
+			"Create Book",
+			"Create Book",
+			"manage_options",
+			"book-management-create-book",
+			array($this, "book_management_create_book")
+		);
+		add_submenu_page(
+			"book-management-tool",
+			"List Book",
+			"List Book",
+			"manage_options",
+			"book-management-list-book",
+			array($this, "book_management_list_book")
+		);
 	}
 
 	public function book_management_list_book_shelf()
@@ -169,7 +269,10 @@ class BooksManagementToolAdmin
 	public function book_management_list_book()
 	{
 		global $wpdb;
-		$query = "SELECT book.*, book_shelf.shelf_name from " . $this->table_activator->wp_owt_tbl_books() . " as book LEFT JOIN " . $this->table_activator->wp_owt_tbl_book_shelf() . " as book_shelf ON book.shelf_id = book_shelf.id ORDER BY id DESC";
+		$query = "SELECT book.*, book_shelf.shelf_name 
+				  FROM " . $this->table_activator->wp_owt_tbl_books() .
+				" as book LEFT JOIN " . $this->table_activator->wp_owt_tbl_book_shelf() .
+				" as book_shelf ON book.shelf_id = book_shelf.id ORDER BY id DESC";
 		$books_data = $wpdb->get_results($query);
 
 		ob_start(); // started buffer
