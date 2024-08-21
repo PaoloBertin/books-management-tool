@@ -40,7 +40,7 @@ class BooksManagementToolActivator
 		if ($wpdb->get_var("SHOW tables like '" . $this->wp_owt_tbl_books() . "'") != $this->wp_owt_tbl_books()) {
 
 			// dynamic table generating code...
-			$table_query = "CREATE TABLE " . $this->wp_owt_tbl_books() . " (
+			$table_query = "CREATE TABLE IF NOT EXISTS " . $this->wp_owt_tbl_books() . " (
 								id int(11) NOT NULL AUTO_INCREMENT,
 								name varchar(150) DEFAULT NULL,
 								amount int(11) DEFAULT NULL,
@@ -56,12 +56,20 @@ class BooksManagementToolActivator
 
 			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 			dbDelta($table_query);
+
+			$insert_query = "INSERT into " . $this->wp_owt_tbl_books() . " (name, amount, description, publication, email, shelf_id) VALUES 
+		        ('I miei giorni alla libreria Morisaki', 5, 'Tokyo. Il quartiere delle librerie e delle case editrici, paradiso dei lettori.', '2024', 'paolo.bertin.62@gmail.com', 1), 
+		        ('La vedova', 3, 'In seguito alla morte del marito, Maria Leonor, madre di due figli, è sopraffatta dalla difficile gestione della fattoria', '2024', 'paolo.bertin.62@gmail.com', 1), 
+		        ('L''età fragile', 1, 'Non esiste un’età senza paura.', '2024', 'paolo.bertin.62@gmail.com', 1)";
+
+			$wpdb->query($insert_query);
+
 		}
 
 		// table for create shelf
 		if ($wpdb->get_var("Show tables like '" . $this->wp_owt_tbl_book_shelf() . "'") != $this->wp_owt_tbl_book_shelf()) {
 
-			$shelf_table = "CREATE TABLE " . $this->wp_owt_tbl_book_shelf() . " (
+			$shelf_table = "CREATE TABLE IF NOT EXISTS " . $this->wp_owt_tbl_book_shelf() . " (
 					 id int(11) NOT NULL AUTO_INCREMENT,
 					 shelf_name varchar(150) NOT NULL,
 					 capacity int(11) NOT NULL,

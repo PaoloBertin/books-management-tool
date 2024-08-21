@@ -60,7 +60,7 @@ class BooksManagementToolDeactivator
 
 		if ($page_id > 0) {
 
-			//wp_delete_post($page_id, true); // delete post wp function
+			wp_delete_post($page_id, true); // delete post wp function
 		}
 	}
 }
