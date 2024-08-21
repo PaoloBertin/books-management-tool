@@ -117,14 +117,12 @@ class BooksManagementToolActivator
 
 	public function wp_owt_tbl_books()
 	{
-
 		global $wpdb;
 		return $wpdb->prefix . "owt_tbl_books"; // $wpdb->prefix => wp_
 	}
 
 	public function wp_owt_tbl_book_shelf()
 	{
-
 		global $wpdb;
 		return $wpdb->prefix . "owt_tbl_book_shelf";
 	}
