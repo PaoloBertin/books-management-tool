@@ -5,7 +5,7 @@ namespace includes;
 use admin\BooksManagementToolAdmin;
 use includes\BooksManagementToolLoader;
 use includes\BooksManagementTooli18n;
-use public\BooksManagementToolPublic;
+use publics\BooksManagementToolPublic;
 
 /**
  * The file that defines the core plugin class

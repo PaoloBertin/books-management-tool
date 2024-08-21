@@ -1,6 +1,6 @@
 <?php
 
-namespace public;
+namespace publics;
 
 /**
  * The public-facing functionality of the plugin.
