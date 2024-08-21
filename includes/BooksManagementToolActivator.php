@@ -40,18 +40,18 @@ class BooksManagementToolActivator
 		if ($wpdb->get_var("SHOW tables like '" . $this->wp_owt_tbl_books() . "'") != $this->wp_owt_tbl_books()) {
 
 			// dynamic table generating code...
-			$table_query = "CREATE TABLE `" . $this->wp_owt_tbl_books() . "` (
-								`id` int(11) NOT NULL AUTO_INCREMENT,
-								`name` varchar(150) DEFAULT NULL,
-								`amount` int(11) DEFAULT NULL,
-								`description` text,
-								`book_image` varchar(200) DEFAULT NULL,
-								`publication` varchar(150) DEFAULT NULL,
-								`email` varchar(150) DEFAULT NULL,
-								`shelf_id` INT NULL,
-								`status` int(11) NOT NULL DEFAULT '1',
-								`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-								PRIMARY KEY  (`id`)
+			$table_query = "CREATE TABLE " . $this->wp_owt_tbl_books() . " (
+								id int(11) NOT NULL AUTO_INCREMENT,
+								name varchar(150) DEFAULT NULL,
+								amount int(11) DEFAULT NULL,
+								description text,
+								book_image varchar(200) DEFAULT NULL,
+								publication varchar(150) DEFAULT NULL,
+								email varchar(150) DEFAULT NULL,
+								shelf_id INT NULL,
+								status int(11) NOT NULL DEFAULT '1',
+								created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+								PRIMARY KEY  (id)
 							 ) ENGINE=InnoDB DEFAULT CHARSET=latin1"; // table create query
 
 			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -61,14 +61,14 @@ class BooksManagementToolActivator
 		// table for create shelf
 		if ($wpdb->get_var("Show tables like '" . $this->wp_owt_tbl_book_shelf() . "'") != $this->wp_owt_tbl_book_shelf()) {
 
-			$shelf_table = "CREATE TABLE `" . $this->wp_owt_tbl_book_shelf() . "` (
-					 `id` int(11) NOT NULL AUTO_INCREMENT,
-					 `shelf_name` varchar(150) NOT NULL,
-					 `capacity` int(11) NOT NULL,
-					 `shelf_location` varchar(200) NOT NULL,
-					 `status` int(11) NOT NULL DEFAULT '1',
-					 `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-					 PRIMARY KEY (`id`)
+			$shelf_table = "CREATE TABLE " . $this->wp_owt_tbl_book_shelf() . " (
+					 id int(11) NOT NULL AUTO_INCREMENT,
+					 shelf_name varchar(150) NOT NULL,
+					 capacity int(11) NOT NULL,
+					 shelf_location varchar(200) NOT NULL,
+					 status int(11) NOT NULL DEFAULT '1',
+					 created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+					 PRIMARY KEY (id)
 					) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 
 			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
